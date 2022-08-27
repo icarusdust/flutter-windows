@@ -1,31 +1,31 @@
 workflows:
   # This workflow is for a normal windows build consisting of the `.exe` file
-  windows-workflow:
-    name: Windows workflow
-    instance_type: windows_x2
-    max_build_duration: 60
-    environment:
-      flutter: master
-    cache:
-      cache_paths:
-        - ~/.pub-cache
-    scripts:
-      - name: Get Flutter packages
-        script: flutter packages pub get
-      - name: Configure for Windows
-        script: flutter config --enable-windows-desktop
-      - name: Build Windows
-        script: flutter build windows
-      - name: Export bundle
-        script: |
-          cd build/windows/runner/Release
-          7z a -r ../release.zip ./*
-    artifacts:
-      - build/windows/runner/*.zip
-    publishing:
-      email:
-        recipients:
-          - email@example.com
+#   windows-workflow:
+#     name: Windows workflow
+#     instance_type: windows_x2
+#     max_build_duration: 60
+#     environment:
+#       flutter: master
+#     cache:
+#       cache_paths:
+#         - ~/.pub-cache
+#     scripts:
+#       - name: Get Flutter packages
+#         script: flutter packages pub get
+#       - name: Configure for Windows
+#         script: flutter config --enable-windows-desktop
+#       - name: Build Windows
+#         script: flutter build windows
+#       - name: Export bundle
+#         script: |
+#           cd build/windows/runner/Release
+#           7z a -r ../release.zip ./*
+#     artifacts:
+#       - build/windows/runner/*.zip
+#     publishing:
+#       email:
+#         recipients:
+#           - email@example.com
   # This workflow is for a MSIX package build that can be published to Microsoft Store using Partner Center
   windows-release-workflow:
     name: Windows release workflow
